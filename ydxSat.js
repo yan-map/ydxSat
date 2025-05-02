@@ -1,5 +1,17 @@
 /// обязательно нужен proj4
-
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define([], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node.js / CommonJS
+    module.exports = factory();
+  } else {
+    // Браузерная глобальная переменная
+    root.ydxSat = factory();
+  }
+}(typeof self !== 'undefined' ? self : this, function () {
+  // ==== Твой модульный код начинается здесь ====
 proj4.defs(
   "EPSG:3395",
   "+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
@@ -208,9 +220,10 @@ function changeYandexPosition(map, prevLayer) {
   }
 }
 
-export default {
+return {
   addYandexSatellite,
   toggleYandexVisibility,
   changeYandexOpacity,
   changeYandexPosition,
 };
+}));
