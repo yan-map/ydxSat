@@ -208,7 +208,7 @@ function changeYandexPosition(map, prevLayer) {
   }
 }
 
-export {
+export default {
   addYandexSatellite,
   toggleYandexVisibility,
   changeYandexOpacity,
